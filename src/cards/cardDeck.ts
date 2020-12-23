@@ -13,10 +13,9 @@ export default class CardDeck {
 
     public shuffle() {
         let shuffledCards: Array<Card> = [];
-        for (let i = 0; i < this.cards.length; i++) {
-            const randomIndex = Math.floor(
-                Math.random() * (this.cards.length - i)
-            );
+        const numberOfCards = this.cards.length;
+        for (let i = 0; i < numberOfCards; i++) {
+            const randomIndex = Math.floor(Math.random() * this.cards.length);
             const randomCard = this.cards.splice(randomIndex, 1)[0];
             shuffledCards.push(randomCard);
         }
@@ -31,5 +30,9 @@ export default class CardDeck {
         cards.forEach((card) => {
             this.cards.push(card);
         });
+    }
+
+    public getDeckSize() {
+        return this.cards.length;
     }
 }

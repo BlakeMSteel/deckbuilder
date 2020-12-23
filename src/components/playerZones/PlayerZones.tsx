@@ -1,5 +1,7 @@
 import React from 'react';
 import Player from '../../player/player';
+import Deck from './Deck';
+import Discard from './Discard';
 import Hand from './Hand';
 
 interface PlayerZonesProps {
@@ -12,11 +14,19 @@ export default class PlayerZones extends React.Component<PlayerZonesProps> {
     }
 
     render() {
+        const { player } = this.props;
         return (
-            <div style={{ position: 'absolute', bottom: '0', display: 'flex' }}>
-                <p>Deck</p>
-                <Hand cards={this.props.player.getHand()} />
-                <p>Discard</p>
+            <div
+                style={{
+                    position: 'absolute',
+                    width: '100%',
+                    bottom: '0',
+                    display: 'flex'
+                }}
+            >
+                <Deck deckSize={player.getDeckSize()} />
+                <Hand cards={player.getHand()} />
+                <Discard discardPile={player.getDiscardPile()} />
             </div>
         );
     }

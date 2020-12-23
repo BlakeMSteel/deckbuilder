@@ -36,4 +36,8 @@ export default class GameManager {
     public getCurrentPlayer() {
         return this.players[this.currentPlayer];
     }
+
+    public getBoard() {
+        return this.board;
+    }
 }

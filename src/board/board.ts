@@ -30,6 +30,10 @@ export default class Board {
         }
     }
 
+    public getRecruitmentRow() {
+        return this.recruitmentRow;
+    }
+
     private addOneToRecruitmentRowFromDeck() {
         const drawnCard = this.cardDeck.drawCard();
         if (drawnCard) {

@@ -47,6 +47,14 @@ export default class Player {
         return this.hand;
     }
 
+    public getDeckSize() {
+        return this.deck.getDeckSize();
+    }
+
+    public getDiscardPile() {
+        return this.discardPile;
+    }
+
     public drawCard() {
         const drawnCard = this.deck.drawCard();
         if (drawnCard) {

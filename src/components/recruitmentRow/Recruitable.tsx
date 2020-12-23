@@ -1,18 +1,18 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import GameCard from '../../cards/card';
+import RecruitmentRow from '../../board/recruitmentRow';
 
-interface HandProps {
-    cards: Array<GameCard>;
+interface RecruitableProps {
+    recruitableCards: RecruitmentRow;
 }
 
-export default class Hand extends React.Component<HandProps> {
+export default class Recruitable extends React.Component<RecruitableProps> {
     render() {
         return (
             <div
-                style={{ display: 'flex', flex: '8', justifyContent: 'center' }}
+                style={{ flex: '8', display: 'flex', justifyContent: 'center' }}
             >
-                {this.props.cards.map((card) => {
+                {this.props.recruitableCards.getCards().map((card) => {
                     const cardInfo = card.getCardInfo();
                     return (
                         <Card
@@ -27,8 +27,11 @@ export default class Hand extends React.Component<HandProps> {
                             />
                             <Card.Body>
                                 <Card.Title>{cardInfo.name}</Card.Title>
+                                <Card.Subtitle>
+                                    Cost: {cardInfo.cost.toString()}
+                                </Card.Subtitle>
                                 <Card.Text>{cardInfo.rulesText}</Card.Text>
-                                <Button variant="primary">Play</Button>
+                                <Button variant="primary">Purchase</Button>
                             </Card.Body>
                         </Card>
                     );
