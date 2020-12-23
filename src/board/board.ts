@@ -34,6 +34,14 @@ export default class Board {
         return this.recruitmentRow;
     }
 
+    public getDeckSize() {
+        return this.cardDeck.getDeckSize();
+    }
+
+    public getDisintegrated() {
+        return this.disintegratedCards;
+    }
+
     private addOneToRecruitmentRowFromDeck() {
         const drawnCard = this.cardDeck.drawCard();
         if (drawnCard) {

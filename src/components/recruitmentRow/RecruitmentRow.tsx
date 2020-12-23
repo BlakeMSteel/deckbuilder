@@ -10,6 +10,7 @@ interface RecruitmentRowProps {
 
 export default class RecruitmentRow extends React.Component<RecruitmentRowProps> {
     render() {
+        const { board } = this.props;
         return (
             <div
                 style={{
@@ -19,11 +20,9 @@ export default class RecruitmentRow extends React.Component<RecruitmentRowProps>
                     display: 'flex'
                 }}
             >
-                <RecruitmentDeck />
-                <Recruitable
-                    recruitableCards={this.props.board.getRecruitmentRow()}
-                />
-                <Disintegrated />
+                <RecruitmentDeck deckSize={board.getDeckSize()} />
+                <Recruitable recruitableCards={board.getRecruitmentRow()} />
+                <Disintegrated disintegratedPile={board.getDisintegrated()} />
             </div>
         );
     }

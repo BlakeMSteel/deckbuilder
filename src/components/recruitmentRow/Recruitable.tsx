@@ -23,7 +23,7 @@ export default class Recruitable extends React.Component<RecruitableProps> {
                         >
                             <Card.Img
                                 style={{ height: '6rem', objectFit: 'cover' }}
-                                src="https://cdn.shopify.com/s/files/1/1601/3103/articles/ArtID_400210_-_Terminate_Size_Final01_1500x.jpg?v=1489512386"
+                                src={cardInfo.image}
                             />
                             <Card.Body>
                                 <Card.Title>{cardInfo.name}</Card.Title>
