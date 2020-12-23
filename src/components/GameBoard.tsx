@@ -1,16 +1,31 @@
 import React from 'react';
-import RecruitmentRow from './RecruitmentRow';
-import PlayerField from './PlayerField';
-import PlayerZones from './PlayerZones';
+import RecruitmentRow from './recruitmentRow/RecruitmentRow';
+import PlayerField from './playerField/PlayerField';
+import PlayerZones from './playerZones/PlayerZones';
+import GameManager from '../gameManager';
 
-export default class GameBoard extends React.Component {
+interface GameBoardState {
+    gameInstance: GameManager;
+}
+
+export default class GameBoard extends React.Component<{}, GameBoardState> {
+    constructor() {
+        super({});
+
+        this.state = {
+            gameInstance: new GameManager()
+        };
+    }
+
     render() {
         return (
-            <>
+            <div style={{ position: 'relative', height: '100vh' }}>
                 <RecruitmentRow />
                 <PlayerField />
-                <PlayerZones />
-            </>
+                <PlayerZones
+                    player={this.state.gameInstance.getCurrentPlayer()}
+                />
+            </div>
         );
     }
 }

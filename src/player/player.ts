@@ -25,7 +25,6 @@ export default class Player {
         });
         this.influence = 30;
         this.power = 0;
-        this.hand = [];
         this.discardPile = [];
         this.cardsInPlay = [];
 
@@ -36,6 +35,32 @@ export default class Player {
             }
         });
         this.deck = new CardDeck({ cards });
+        this.deck.shuffle();
+
+        this.hand = [];
+        for (let i = 0; i < 5; i++) {
+            this.drawCard();
+        }
+    }
+
+    public getHand() {
+        return this.hand;
+    }
+
+    public drawCard() {
+        const drawnCard = this.deck.drawCard();
+        if (drawnCard) {
+            this.hand.push(drawnCard);
+        } else if (this.discardPile.length > 0) {
+            this.shuffleDiscardIntoDeck();
+            this.drawCard();
+        }
+    }
+
+    private shuffleDiscardIntoDeck() {
+        this.deck.addCards(this.discardPile);
+        this.discardPile = [];
+        this.deck.shuffle();
     }
 
     public canAfford(card: Card) {
